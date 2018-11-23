@@ -1,0 +1,32 @@
+PODS:
+  - RIBs (0.9.1):
+    - RxSwift (~> 4.0)
+  - RxAtomic (4.4.0)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
+  - SwiftGen (6.0.2)
+  - When (4.0.0)
+
+DEPENDENCIES:
+  - RIBs
+  - SwiftGen
+  - When
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - RIBs
+    - RxAtomic
+    - RxSwift
+    - SwiftGen
+    - When
+
+SPEC CHECKSUMS:
+  RIBs: 879184fbca567425c488d6b3d14a9c5abfbf9d47
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  SwiftGen: e5b047067aa84082826a0c4f1c4c2ddc95bcf74c
+  When: 4ffc88d535a094ad4bd5eaf2fd187de747e716d1
+
+PODFILE CHECKSUM: b124e7b31d0b0fdefef0ef0398b4f8fad145e640
+
+COCOAPODS: 1.5.3
