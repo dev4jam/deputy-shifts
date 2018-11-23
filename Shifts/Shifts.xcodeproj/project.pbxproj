@@ -12,6 +12,9 @@
 		E69DC79A21A8C78F008C51AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69DC79921A8C78F008C51AE /* Assets.xcassets */; };
 		E69DC79D21A8C78F008C51AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E69DC79B21A8C78F008C51AE /* LaunchScreen.storyboard */; };
 		E69DC7AD21A8C8AC008C51AE /* ShiftsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7AC21A8C8AC008C51AE /* ShiftsTests.swift */; };
+		E69DC7B921A8C96D008C51AE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E69DC7B521A8C96D008C51AE /* Localizable.strings */; };
+		E69DC7C021A8CA10008C51AE /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7BE21A8CA10008C51AE /* Assets.swift */; };
+		E69DC7C121A8CA10008C51AE /* l10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7BF21A8CA10008C51AE /* l10n.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,9 @@
 		E69DC7AA21A8C8AC008C51AE /* ShiftsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShiftsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E69DC7AC21A8C8AC008C51AE /* ShiftsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftsTests.swift; sourceTree = "<group>"; };
 		E69DC7AE21A8C8AC008C51AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E69DC7B621A8C96D008C51AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E69DC7BE21A8CA10008C51AE /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		E69DC7BF21A8CA10008C51AE /* l10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = l10n.swift; sourceTree = "<group>"; };
 		F531FD029A7BA8C4C9AAC780 /* Pods-Shifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifts/Pods-Shifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				E69DC7A521A8C7BB008C51AE /* App */,
+				E69DC7BC21A8CA10008C51AE /* Other-Sources */,
 				E69DC7A421A8C7A9008C51AE /* Resources */,
 			);
 			path = Shifts;
@@ -106,6 +113,7 @@
 		E69DC7A421A8C7A9008C51AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E69DC7B421A8C96D008C51AE /* LocalizableStrings */,
 				E69DC79921A8C78F008C51AE /* Assets.xcassets */,
 				E69DC79B21A8C78F008C51AE /* LaunchScreen.storyboard */,
 				E69DC79E21A8C78F008C51AE /* Info.plist */,
@@ -130,6 +138,31 @@
 			path = ShiftsTests;
 			sourceTree = "<group>";
 		};
+		E69DC7B421A8C96D008C51AE /* LocalizableStrings */ = {
+			isa = PBXGroup;
+			children = (
+				E69DC7B521A8C96D008C51AE /* Localizable.strings */,
+			);
+			path = LocalizableStrings;
+			sourceTree = "<group>";
+		};
+		E69DC7BC21A8CA10008C51AE /* Other-Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E69DC7BD21A8CA10008C51AE /* Generated */,
+			);
+			path = "Other-Sources";
+			sourceTree = "<group>";
+		};
+		E69DC7BD21A8CA10008C51AE /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				E69DC7BE21A8CA10008C51AE /* Assets.swift */,
+				E69DC7BF21A8CA10008C51AE /* l10n.swift */,
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +171,7 @@
 			buildConfigurationList = E69DC7A121A8C78F008C51AE /* Build configuration list for PBXNativeTarget "Shifts" */;
 			buildPhases = (
 				6ABFF6D7E78CACDCA2FCEDFE /* [CP] Check Pods Manifest.lock */,
+				E69DC7C221A8CAF3008C51AE /* Autogenerate assets */,
 				E69DC78B21A8C78C008C51AE /* Sources */,
 				E69DC78C21A8C78C008C51AE /* Frameworks */,
 				E69DC78D21A8C78C008C51AE /* Resources */,
@@ -214,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69DC79D21A8C78F008C51AE /* LaunchScreen.storyboard in Resources */,
+				E69DC7B921A8C96D008C51AE /* Localizable.strings in Resources */,
 				E69DC79A21A8C78F008C51AE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +305,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E69DC7C221A8CAF3008C51AE /* Autogenerate assets */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Autogenerate assets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen xcassets --templatePath $PODS_ROOT/SwiftGen/templates/xcassets/swift4.stencil ${SRCROOT}/${PROJECT_NAME}/Resources/Assets.xcassets > ${SRCROOT}/${PROJECT_NAME}/Other-Sources/Generated/Assets.swift\n\n$PODS_ROOT/SwiftGen/bin/swiftgen strings --templatePath $PODS_ROOT/SwiftGen/templates/strings/flat-swift4.stencil ${SRCROOT}/${PROJECT_NAME}/Resources/LocalizableStrings/en.lproj/Localizable.strings > ${SRCROOT}/${PROJECT_NAME}/Other-Sources/Generated/l10n.swift\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -277,6 +330,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E69DC7C021A8CA10008C51AE /* Assets.swift in Sources */,
+				E69DC7C121A8CA10008C51AE /* l10n.swift in Sources */,
 				E69DC79321A8C78C008C51AE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +361,14 @@
 				E69DC79C21A8C78F008C51AE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E69DC7B521A8C96D008C51AE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E69DC7B621A8C96D008C51AE /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
