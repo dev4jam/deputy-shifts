@@ -28,10 +28,18 @@ internal enum L10n {
   internal static let shifts = L10n.tr("Localizable", "Shifts")
   /// Start
   internal static let start = L10n.tr("Localizable", "Start")
+  /// Started on %@
+  internal static func startedOn(_ p1: String) -> String {
+    return L10n.tr("Localizable", "StartedOn", p1)
+  }
   /// Starting...
   internal static let starting = L10n.tr("Localizable", "Starting")
   /// Stop
   internal static let stop = L10n.tr("Localizable", "Stop")
+  /// Stopped on %@
+  internal static func stoppedOn(_ p1: String) -> String {
+    return L10n.tr("Localizable", "StoppedOn", p1)
+  }
   /// Stopping...
   internal static let stopping = L10n.tr("Localizable", "Stopping")
 }

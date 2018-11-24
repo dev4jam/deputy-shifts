@@ -24,12 +24,17 @@ final class ShiftsViewController: UIViewController, ShiftsPresentable, ShiftsVie
     
     private var shifts: [ShiftVM] = []
     
+    private let cellId: String = "ShiftsViewControllerShiftCellId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         actionButton.layer.cornerRadius = actionButton.frame.width / 2.0
         actionButton.layer.borderColor  = UIColor.red.cgColor
         actionButton.layer.borderWidth  = 2.0
+        
+        tableView.register(UINib(nibName: "ShiftCell", bundle: Bundle(for: ShiftCell.self)),
+                           forCellReuseIdentifier: cellId)
         
         listener?.didPrepareView()
     }
@@ -75,7 +80,17 @@ extension ShiftsViewController: UITableViewDelegate, UITableViewDataSource {
         return shifts.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId) else { fatalError() }
+        guard let shiftCell = cell as? ShiftCell else { fatalError() }
+        guard indexPath.row < shifts.count else { fatalError() }
+        
+        shiftCell.show(shift: shifts[indexPath.row])
+        
+        return shiftCell
     }
 }

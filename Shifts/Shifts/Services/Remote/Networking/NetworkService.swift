@@ -77,6 +77,8 @@ open class NetworkService: NSObject, NetworkServiceProtocol {
                             promise.reject(NetworkError.authorisationExpired("session expired"))
                         } else if code == 401 {
                             promise.reject(NetworkError.notAuthorised("request is not authorized"))
+                        } else if let data = parsedResponse.data, data.isEmpty {
+                            promise.reject(NetworkError.missingData("no data"))
                         } else if parsedResponse.data != nil {
                             promise.resolve(parsedResponse)
                         } else {

@@ -74,6 +74,20 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
         updateAction()
     }
     
+    private func parseNetworkError(_ error: NetworkError) {
+        switch error {
+        case .missingData(_):
+            isShiftStarted = false
+            
+            updateAction()
+            presenter.showAction()
+            presenter.hideLoading()
+            
+        default:
+            presenter.showError(with: error.localizedDescription)
+        }
+    }
+    
     private func reloadShifts() {
         presenter.showLoading(with: L10n.loading)
         
@@ -99,7 +113,11 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
             .fail { [weak self]  (error) in
                 guard let this = self else { return }
 
-                this.presenter.showError(with: error.localizedDescription)
+                if let netError = error as? NetworkError {
+                    this.parseNetworkError(netError)
+                } else {
+                    this.presenter.showError(with: error.localizedDescription)
+                }
             }
     }
     
@@ -182,7 +200,6 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
     // MARK: - ShiftsPresentableListener
     
     func didPrepareView() {
-        reloadShifts()
         updateAction()
     }
     

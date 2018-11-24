@@ -62,6 +62,8 @@
 		E69DC82821A8F12B008C51AE /* LocationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC82721A8F12B008C51AE /* LocationServiceProtocol.swift */; };
 		E69DC82A21A8F135008C51AE /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC82921A8F135008C51AE /* LocationService.swift */; };
 		E69DC82D21A8F175008C51AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E69DC82B21A8F175008C51AE /* InfoPlist.strings */; };
+		E69DC83121A90EFD008C51AE /* ShiftCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC82F21A90EFD008C51AE /* ShiftCell.swift */; };
+		E69DC83221A90EFD008C51AE /* ShiftCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69DC83021A90EFD008C51AE /* ShiftCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +139,8 @@
 		E69DC82721A8F12B008C51AE /* LocationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceProtocol.swift; sourceTree = "<group>"; };
 		E69DC82921A8F135008C51AE /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		E69DC82C21A8F175008C51AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E69DC82F21A90EFD008C51AE /* ShiftCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftCell.swift; sourceTree = "<group>"; };
+		E69DC83021A90EFD008C51AE /* ShiftCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShiftCell.xib; sourceTree = "<group>"; };
 		F531FD029A7BA8C4C9AAC780 /* Pods-Shifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifts/Pods-Shifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +211,7 @@
 				E69DC7C321A8CB46008C51AE /* RIBs */,
 				E69DC7C721A8CB81008C51AE /* Services */,
 				E69DC7C621A8CB78008C51AE /* Models */,
+				E69DC82E21A90EE3008C51AE /* Views */,
 				E69DC7C521A8CB59008C51AE /* Utils */,
 				E69DC7BC21A8CA10008C51AE /* Other-Sources */,
 				E69DC7A421A8C7A9008C51AE /* Resources */,
@@ -405,6 +410,15 @@
 			path = Shifts;
 			sourceTree = "<group>";
 		};
+		E69DC82E21A90EE3008C51AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E69DC82F21A90EFD008C51AE /* ShiftCell.swift */,
+				E69DC83021A90EFD008C51AE /* ShiftCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -496,6 +510,7 @@
 				E69DC82D21A8F175008C51AE /* InfoPlist.strings in Resources */,
 				E69DC7B921A8C96D008C51AE /* Localizable.strings in Resources */,
 				E69DC81321A8DF03008C51AE /* RootViewController.xib in Resources */,
+				E69DC83221A90EFD008C51AE /* ShiftCell.xib in Resources */,
 				E69DC82021A8E4A6008C51AE /* ShiftsViewController.xib in Resources */,
 				E69DC79A21A8C78F008C51AE /* Assets.xcassets in Resources */,
 			);
@@ -638,6 +653,7 @@
 				E69DC81021A8DF03008C51AE /* RootViewController.swift in Sources */,
 				E69DC82821A8F12B008C51AE /* LocationServiceProtocol.swift in Sources */,
 				E69DC7EB21A8D5C6008C51AE /* QueryBuilder.swift in Sources */,
+				E69DC83121A90EFD008C51AE /* ShiftCell.swift in Sources */,
 				E69DC82221A8E588008C51AE /* RootComponent+Shifts.swift in Sources */,
 				E69DC81521A8E106008C51AE /* AppComponent.swift in Sources */,
 				E69DC80821A8DE66008C51AE /* AutoMockable.swift in Sources */,
