@@ -31,6 +31,8 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
 
     weak var router: ShiftsRouting?
     weak var listener: ShiftsListener?
+    
+    private var isShiftStarted: Bool = false
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
@@ -56,13 +58,21 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
         // TODO: Pause any business logic.
     }
     
+    private func updateAction() {
+        let newActionTitle = isShiftStarted ? L10n.stop : L10n.start
+        
+        presenter.updateActionTitle(to: newActionTitle)
+    }
+    
     // MARK: - ShiftsPresentableListener
     
     func didPrepareView() {
-        
+        updateAction()
     }
     
     func didSelectAction() {
+        isShiftStarted = !isShiftStarted
         
+        updateAction()
     }
 }

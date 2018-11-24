@@ -32,6 +32,7 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pc2-jd-mwi">
                     <rect key="frame" x="147.5" y="575" width="80" height="80"/>
+                    <accessibility key="accessibilityConfiguration" hint="Starts or stops a shift" label="Action"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="JnU-dc-BEe"/>
                         <constraint firstAttribute="width" constant="80" id="do9-zL-4yx"/>
