@@ -23,16 +23,6 @@ final class LocationService: NSObject, LocationServiceProtocol {
     }()
     
     private func authoriseLocation() {
-        guard CLLocationManager.authorizationStatus() == .denied else {
-            promise?.reject(LocationError.locationNotAuthorised)
-            return
-        }
-        
-        guard CLLocationManager.authorizationStatus() == .restricted else {
-            promise?.reject(LocationError.locationDisabled)
-            return
-        }
-
         locationManager.requestWhenInUseAuthorization()
     }
 
@@ -85,8 +75,6 @@ extension LocationService: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             locationManager.requestLocation()
-        } else {
-            promise?.reject(LocationError.locationNotAuthorised)
         }
     }
     

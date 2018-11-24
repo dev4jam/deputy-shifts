@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class StartShiftOperation: ModelOperation<StartShiftResponse> {
+final class StartShiftOperation: ModelOperation<EmptyResponse> {
     init(time: Date, latitude: Double, longitude: Double) {
         super.init()
         
@@ -23,7 +23,7 @@ final class StartShiftOperation: ModelOperation<StartShiftResponse> {
     }
 }
 
-final class StopShiftOperation: ModelOperation<StopShiftResponse> {
+final class StopShiftOperation: ModelOperation<EmptyResponse> {
     init(time: Date, latitude: Double, longitude: Double) {
         super.init()
         

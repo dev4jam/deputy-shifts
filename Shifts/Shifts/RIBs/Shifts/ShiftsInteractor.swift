@@ -74,7 +74,7 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
         updateAction()
     }
     
-    private func parseNetworkError(_ error: NetworkError) {
+    private func parseReloadShiftsNetworkError(_ error: NetworkError) {
         switch error {
         case .missingData(_):
             isShiftStarted = false
@@ -87,7 +87,18 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
             presenter.showError(with: error.localizedDescription)
         }
     }
-    
+
+    private func parseStartStopShiftNetworkError(_ error: NetworkError) {
+        switch error {
+        case .missingData(_):
+            presenter.hideLoading()
+            reloadShifts()
+
+        default:
+            presenter.showError(with: error.localizedDescription)
+        }
+    }
+
     private func reloadShifts() {
         presenter.showLoading(with: L10n.loading)
         
@@ -114,7 +125,7 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
                 guard let this = self else { return }
 
                 if let netError = error as? NetworkError {
-                    this.parseNetworkError(netError)
+                    this.parseReloadShiftsNetworkError(netError)
                 } else {
                     this.presenter.showError(with: error.localizedDescription)
                 }
@@ -149,7 +160,11 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
             .fail { [weak self]  (error) in
                 guard let this = self else { return }
                 
-                this.presenter.showError(with: error.localizedDescription)
+                if let netError = error as? NetworkError {
+                    this.parseStartStopShiftNetworkError(netError)
+                } else {
+                    this.presenter.showError(with: error.localizedDescription)
+                }
             }
     }
     
@@ -175,7 +190,11 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
             .fail { [weak self]  (error) in
                 guard let this = self else { return }
                 
-                this.presenter.showError(with: error.localizedDescription)
+                if let netError = error as? NetworkError {
+                    this.parseStartStopShiftNetworkError(netError)
+                } else {
+                    this.presenter.showError(with: error.localizedDescription)
+                }
             }
     }
 

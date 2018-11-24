@@ -20,6 +20,8 @@ internal enum L10n {
   internal static let locationNotAuthorised = L10n.tr("Localizable", "LocationNotAuthorised")
   /// Location not found
   internal static let locationNotFound = L10n.tr("Localizable", "LocationNotFound")
+  /// Waiting for location...
+  internal static let locationNotReady = L10n.tr("Localizable", "LocationNotReady")
   /// N/A
   internal static let notAvailable = L10n.tr("Localizable", "NotAvailable")
   /// Shift
