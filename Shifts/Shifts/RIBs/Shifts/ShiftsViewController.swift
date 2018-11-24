@@ -13,6 +13,7 @@ import UIKit
 protocol ShiftsPresentableListener: class {
     func didPrepareView()
     func didSelectAction()
+    func didRequestImage(for shift: ShiftVM)
 }
 
 final class ShiftsViewController: UIViewController, ShiftsPresentable, ShiftsViewControllable {

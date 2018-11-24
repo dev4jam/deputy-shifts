@@ -110,11 +110,55 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
     }
 
     private func startShift() {
+        guard let location = self.location else {
+            presenter.showError(with: L10n.locationFailed)
+            revertAction()
+            return
+        }
         
+        presenter.showLoading(with: L10n.starting)
+        
+        StartShiftOperation(time: Date(),
+                            latitude: location.coordinate.latitude,
+                            longitude: location.coordinate.longitude)
+            .execute(in: networkService)
+            .done { [weak self] (response) in
+                guard let this = self else { return }
+                
+                this.presenter.hideLoading()
+                this.reloadShifts()
+            }
+            .fail { [weak self]  (error) in
+                guard let this = self else { return }
+                
+                this.presenter.showError(with: error.localizedDescription)
+            }
     }
     
     private func stopShift() {
+        guard let location = self.location else {
+            presenter.showError(with: L10n.locationFailed)
+            revertAction()
+            return
+        }
         
+        presenter.showLoading(with: L10n.stopping)
+        
+        StopShiftOperation(time: Date(),
+                           latitude: location.coordinate.latitude,
+                           longitude: location.coordinate.longitude)
+            .execute(in: networkService)
+            .done { [weak self] (response) in
+                guard let this = self else { return }
+                
+                this.presenter.hideLoading()
+                this.reloadShifts()
+            }
+            .fail { [weak self]  (error) in
+                guard let this = self else { return }
+                
+                this.presenter.showError(with: error.localizedDescription)
+            }
     }
 
     override func didBecomeActive() {
@@ -140,6 +184,17 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
     func didPrepareView() {
         reloadShifts()
         updateAction()
+    }
+    
+    func didRequestImage(for shift: ShiftVM) {
+        guard shift.image.value == nil else { return }
+        guard !shift.imageUrl.isEmpty else { return }
+        
+        GetShiftImageOperation(url: shift.imageUrl)
+            .execute(in: imageService)
+            .done { (image) in
+                shift.image.value = image
+            }
     }
     
     func didSelectAction() {

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 final class ShiftVM {
     let model: Shift
@@ -48,5 +49,5 @@ final class ShiftVM {
         return model.image
     }
     
-    var image: UIImage?
+    var image: Variable<UIImage?> = Variable(nil)
 }

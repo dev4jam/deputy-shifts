@@ -48,10 +48,10 @@ final class GetShiftsOperation: ModelOperation<[Shift]?> {
 }
 
 final class GetShiftImageOperation: ImageOperation {
-    override init() {
+    init(url: String) {
         super.init()
         
-        request = Request(method: .get, endpoint: "/500/500/?random",
+        request = Request(method: .get, endpoint: url,
                           params: nil, fields: nil, body: nil)
     }
 }

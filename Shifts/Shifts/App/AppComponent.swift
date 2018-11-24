@@ -26,8 +26,7 @@ final class AppComponent: Component<EmptyDependency>, RootDependency {
                                         auth: .token(Config.serviceAccessToken),
                                         headers: [:])
 
-        imageService = NetworkService(baseUrl: Config.imagesBaseUrl,
-                                      auth: nil, headers: [:])
+        imageService = NetworkService(baseUrl: "", auth: nil, headers: [:])
 
         super.init(dependency: EmptyComponent())
     }
