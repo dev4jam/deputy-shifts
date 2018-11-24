@@ -46,3 +46,12 @@ final class GetShiftsOperation: ModelOperation<[Shift]?> {
                           params: nil, fields: nil, body: nil)
     }
 }
+
+final class GetShiftImageOperation: ImageOperation {
+    override init() {
+        super.init()
+        
+        request = Request(method: .get, endpoint: "/500/500/?random",
+                          params: nil, fields: nil, body: nil)
+    }
+}

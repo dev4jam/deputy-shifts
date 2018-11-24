@@ -22,3 +22,13 @@ import RxSwift
 
 
 
+final class RootPresentableMock: RootPresentable {
+    var listener: RootPresentableListener?
+
+}
+
+final class ShiftsPresentableMock: ShiftsPresentable {
+    var listener: ShiftsPresentableListener?
+
+}
+

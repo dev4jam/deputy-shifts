@@ -9,6 +9,7 @@ target 'Shifts' do
   pod 'RIBs'
   pod 'SwiftGen'
   pod 'When'
+  pod 'SVProgressHUD'
 
   target 'ShiftsTests' do
     inherit! :search_paths
