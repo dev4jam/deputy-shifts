@@ -59,6 +59,9 @@
 		E69DC82221A8E588008C51AE /* RootComponent+Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC82121A8E588008C51AE /* RootComponent+Shifts.swift */; };
 		E69DC82421A8E80E008C51AE /* ShiftVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC82321A8E80E008C51AE /* ShiftVM.swift */; };
 		E69DC82621A8E8E0008C51AE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC82521A8E8E0008C51AE /* String.swift */; };
+		E69DC82821A8F12B008C51AE /* LocationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC82721A8F12B008C51AE /* LocationServiceProtocol.swift */; };
+		E69DC82A21A8F135008C51AE /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC82921A8F135008C51AE /* LocationService.swift */; };
+		E69DC82D21A8F175008C51AE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E69DC82B21A8F175008C51AE /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +134,9 @@
 		E69DC82121A8E588008C51AE /* RootComponent+Shifts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootComponent+Shifts.swift"; sourceTree = "<group>"; };
 		E69DC82321A8E80E008C51AE /* ShiftVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftVM.swift; sourceTree = "<group>"; };
 		E69DC82521A8E8E0008C51AE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		E69DC82721A8F12B008C51AE /* LocationServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServiceProtocol.swift; sourceTree = "<group>"; };
+		E69DC82921A8F135008C51AE /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		E69DC82C21A8F175008C51AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F531FD029A7BA8C4C9AAC780 /* Pods-Shifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifts/Pods-Shifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -242,6 +248,7 @@
 		E69DC7B421A8C96D008C51AE /* LocalizableStrings */ = {
 			isa = PBXGroup;
 			children = (
+				E69DC82B21A8F175008C51AE /* InfoPlist.strings */,
 				E69DC7B521A8C96D008C51AE /* Localizable.strings */,
 			);
 			path = LocalizableStrings;
@@ -341,6 +348,8 @@
 		E69DC7E021A8D17B008C51AE /* Local */ = {
 			isa = PBXGroup;
 			children = (
+				E69DC82721A8F12B008C51AE /* LocationServiceProtocol.swift */,
+				E69DC82921A8F135008C51AE /* LocationService.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -484,6 +493,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69DC79D21A8C78F008C51AE /* LaunchScreen.storyboard in Resources */,
+				E69DC82D21A8F175008C51AE /* InfoPlist.strings in Resources */,
 				E69DC7B921A8C96D008C51AE /* Localizable.strings in Resources */,
 				E69DC81321A8DF03008C51AE /* RootViewController.xib in Resources */,
 				E69DC82021A8E4A6008C51AE /* ShiftsViewController.xib in Resources */,
@@ -622,9 +632,11 @@
 				E69DC81221A8DF03008C51AE /* RootInteractor.swift in Sources */,
 				E69DC7C021A8CA10008C51AE /* Assets.swift in Sources */,
 				E69DC7E321A8D19A008C51AE /* NetworkiServiceProtocol.swift in Sources */,
+				E69DC82A21A8F135008C51AE /* LocationService.swift in Sources */,
 				E69DC81E21A8E4A6008C51AE /* ShiftsBuilder.swift in Sources */,
 				E69DC81F21A8E4A6008C51AE /* ShiftsInteractor.swift in Sources */,
 				E69DC81021A8DF03008C51AE /* RootViewController.swift in Sources */,
+				E69DC82821A8F12B008C51AE /* LocationServiceProtocol.swift in Sources */,
 				E69DC7EB21A8D5C6008C51AE /* QueryBuilder.swift in Sources */,
 				E69DC82221A8E588008C51AE /* RootComponent+Shifts.swift in Sources */,
 				E69DC81521A8E106008C51AE /* AppComponent.swift in Sources */,
@@ -692,6 +704,14 @@
 				E69DC7B621A8C96D008C51AE /* en */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E69DC82B21A8F175008C51AE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E69DC82C21A8F175008C51AE /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

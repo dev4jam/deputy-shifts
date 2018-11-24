@@ -10,6 +10,12 @@ import Foundation
 
 // swiftlint:disable function_parameter_count identifier_name line_length type_body_length
 internal enum L10n {
+  /// LocationDisabled
+  internal static let locationDisabled = L10n.tr("Localizable", "LocationDisabled")
+  /// Location is not authorised
+  internal static let locationNotAuthorised = L10n.tr("Localizable", "LocationNotAuthorised")
+  /// Location not found
+  internal static let locationNotFound = L10n.tr("Localizable", "LocationNotFound")
   /// N/A
   internal static let notAvailable = L10n.tr("Localizable", "NotAvailable")
   /// Shift
