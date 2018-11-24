@@ -30,5 +30,20 @@ final class RootPresentableMock: RootPresentable {
 final class ShiftsPresentableMock: ShiftsPresentable {
     var listener: ShiftsPresentableListener?
 
+    //MARK: - showShifts
+
+    var showShiftsCallsCount = 0
+    var showShiftsCalled: Bool {
+        return showShiftsCallsCount > 0
+    }
+    var showShiftsReceivedShifts: [ShiftVM]?
+    var showShiftsHandler: (([ShiftVM]) -> Void)?
+
+    func showShifts(_ shifts: [ShiftVM]) {
+        showShiftsCallsCount += 1
+        showShiftsReceivedShifts = shifts
+        showShiftsHandler?(shifts)
+    }
+
 }
 

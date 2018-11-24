@@ -57,6 +57,8 @@
 		E69DC81F21A8E4A6008C51AE /* ShiftsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC81A21A8E4A6008C51AE /* ShiftsInteractor.swift */; };
 		E69DC82021A8E4A6008C51AE /* ShiftsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E69DC81B21A8E4A6008C51AE /* ShiftsViewController.xib */; };
 		E69DC82221A8E588008C51AE /* RootComponent+Shifts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC82121A8E588008C51AE /* RootComponent+Shifts.swift */; };
+		E69DC82421A8E80E008C51AE /* ShiftVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC82321A8E80E008C51AE /* ShiftVM.swift */; };
+		E69DC82621A8E8E0008C51AE /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC82521A8E8E0008C51AE /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,6 +129,8 @@
 		E69DC81A21A8E4A6008C51AE /* ShiftsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftsInteractor.swift; sourceTree = "<group>"; };
 		E69DC81B21A8E4A6008C51AE /* ShiftsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShiftsViewController.xib; sourceTree = "<group>"; };
 		E69DC82121A8E588008C51AE /* RootComponent+Shifts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RootComponent+Shifts.swift"; sourceTree = "<group>"; };
+		E69DC82321A8E80E008C51AE /* ShiftVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftVM.swift; sourceTree = "<group>"; };
+		E69DC82521A8E8E0008C51AE /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F531FD029A7BA8C4C9AAC780 /* Pods-Shifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifts/Pods-Shifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -286,6 +290,7 @@
 				E69DC80421A8DE66008C51AE /* AutoMockable.swift */,
 				E69DC7CA21A8CBE4008C51AE /* UserDefaults.swift */,
 				E69DC7F621A8D935008C51AE /* DateTime.swift */,
+				E69DC82521A8E8E0008C51AE /* String.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 				E69DC7FB21A8DA82008C51AE /* StartShiftResponse.swift */,
 				E69DC7FD21A8DB14008C51AE /* StopShiftResponse.swift */,
 				E69DC7FF21A8DB57008C51AE /* Shift.swift */,
+				E69DC82321A8E80E008C51AE /* ShiftVM.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -626,6 +632,7 @@
 				E69DC7FE21A8DB14008C51AE /* StopShiftResponse.swift in Sources */,
 				E69DC80021A8DB57008C51AE /* Shift.swift in Sources */,
 				E69DC81D21A8E4A6008C51AE /* ShiftsViewController.swift in Sources */,
+				E69DC82421A8E80E008C51AE /* ShiftVM.swift in Sources */,
 				E69DC7CB21A8CBE4008C51AE /* UserDefaults.swift in Sources */,
 				E69DC7FC21A8DA82008C51AE /* StartShiftResponse.swift in Sources */,
 				E69DC7C921A8CBAF008C51AE /* Config.swift in Sources */,
@@ -639,6 +646,7 @@
 				E69DC80521A8DE66008C51AE /* UIViewController.swift in Sources */,
 				E69DC7FA21A8DA78008C51AE /* StartShiftOperations.swift in Sources */,
 				E69DC7F521A8D8EB008C51AE /* ImageOperation.swift in Sources */,
+				E69DC82621A8E8E0008C51AE /* String.swift in Sources */,
 				E69DC79321A8C78C008C51AE /* AppDelegate.swift in Sources */,
 				E69DC81121A8DF03008C51AE /* RootBuilder.swift in Sources */,
 				E69DC7E921A8D367008C51AE /* Request.swift in Sources */,

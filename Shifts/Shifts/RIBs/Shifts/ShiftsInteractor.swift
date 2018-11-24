@@ -16,6 +16,8 @@ protocol ShiftsRouting: ViewableRouting {
 protocol ShiftsPresentable: Presentable {
     var listener: ShiftsPresentableListener? { get set }
     // TODO: Declare methods the interactor can invoke the presenter to present data.
+    
+    func showShifts(_ shifts: [ShiftVM])
 }
 
 protocol ShiftsListener: class {
@@ -51,5 +53,15 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
     override func willResignActive() {
         super.willResignActive()
         // TODO: Pause any business logic.
+    }
+    
+    // MARK: - ShiftsPresentableListener
+    
+    func didPrepareView() {
+        
+    }
+    
+    func didSelectAction() {
+        
     }
 }

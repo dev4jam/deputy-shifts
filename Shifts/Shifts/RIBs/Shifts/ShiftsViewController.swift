@@ -11,12 +11,25 @@ import RxSwift
 import UIKit
 
 protocol ShiftsPresentableListener: class {
-    // TODO: Declare properties and methods that the view controller can invoke to perform
-    // business logic, such as signIn(). This protocol is implemented by the corresponding
-    // interactor class.
+    func didPrepareView()
+    func didSelectAction()
 }
 
 final class ShiftsViewController: UIViewController, ShiftsPresentable, ShiftsViewControllable {
-
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var actionButton: UIButton!
+    
     weak var listener: ShiftsPresentableListener?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        listener?.didPrepareView()
+    }
+    
+    // MARK: - ShiftsPresentable
+    
+    func showShifts(_ shifts: [ShiftVM]) {
+        
+    }
 }
