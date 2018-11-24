@@ -10,4 +10,11 @@ target 'Shifts' do
   pod 'SwiftGen'
   pod 'When'
 
+  target 'ShiftsTests' do
+    inherit! :search_paths
+    
+    # Pods for testing
+    pod 'Sourcery'
+    
+  end
 end

@@ -4,11 +4,13 @@ PODS:
   - RxAtomic (4.4.0)
   - RxSwift (4.4.0):
     - RxAtomic (~> 4.4)
+  - Sourcery (0.15.0)
   - SwiftGen (6.0.2)
   - When (4.0.0)
 
 DEPENDENCIES:
   - RIBs
+  - Sourcery
   - SwiftGen
   - When
 
@@ -17,6 +19,7 @@ SPEC REPOS:
     - RIBs
     - RxAtomic
     - RxSwift
+    - Sourcery
     - SwiftGen
     - When
 
@@ -24,9 +27,10 @@ SPEC CHECKSUMS:
   RIBs: 879184fbca567425c488d6b3d14a9c5abfbf9d47
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  Sourcery: 5895672cae353cdbfa95f3f4aaeb75a664d76f6a
   SwiftGen: e5b047067aa84082826a0c4f1c4c2ddc95bcf74c
   When: 4ffc88d535a094ad4bd5eaf2fd187de747e716d1
 
-PODFILE CHECKSUM: b124e7b31d0b0fdefef0ef0398b4f8fad145e640
+PODFILE CHECKSUM: 8e7a2171be7d9467300261a9692aedd8019fef53
 
 COCOAPODS: 1.5.3
