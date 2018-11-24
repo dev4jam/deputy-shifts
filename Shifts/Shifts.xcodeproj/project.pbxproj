@@ -33,6 +33,10 @@
 		E69DC7EB21A8D5C6008C51AE /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7EA21A8D5C6008C51AE /* QueryBuilder.swift */; };
 		E69DC7ED21A8D5F3008C51AE /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7EC21A8D5F3008C51AE /* Response.swift */; };
 		E69DC7EF21A8D64F008C51AE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7EE21A8D64F008C51AE /* NetworkService.swift */; };
+		E69DC7F121A8D88A008C51AE /* ModelOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7F021A8D88A008C51AE /* ModelOperation.swift */; };
+		E69DC7F321A8D8A5008C51AE /* OperationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7F221A8D8A5008C51AE /* OperationProtocol.swift */; };
+		E69DC7F521A8D8EB008C51AE /* ImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7F421A8D8EB008C51AE /* ImageOperation.swift */; };
+		E69DC7F721A8D935008C51AE /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7F621A8D935008C51AE /* DateTime.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,10 @@
 		E69DC7EA21A8D5C6008C51AE /* QueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
 		E69DC7EC21A8D5F3008C51AE /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		E69DC7EE21A8D64F008C51AE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		E69DC7F021A8D88A008C51AE /* ModelOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelOperation.swift; sourceTree = "<group>"; };
+		E69DC7F221A8D8A5008C51AE /* OperationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationProtocol.swift; sourceTree = "<group>"; };
+		E69DC7F421A8D8EB008C51AE /* ImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOperation.swift; sourceTree = "<group>"; };
+		E69DC7F621A8D935008C51AE /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		F531FD029A7BA8C4C9AAC780 /* Pods-Shifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifts/Pods-Shifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -230,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				E69DC7CA21A8CBE4008C51AE /* UserDefaults.swift */,
+				E69DC7F621A8D935008C51AE /* DateTime.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -283,6 +292,14 @@
 		E69DC7E121A8D181008C51AE /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				E69DC7F821A8D9C4008C51AE /* Networking */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		E69DC7F821A8D9C4008C51AE /* Networking */ = {
+			isa = PBXGroup;
+			children = (
 				E69DC7E221A8D19A008C51AE /* NetworkiServiceProtocol.swift */,
 				E69DC7EE21A8D64F008C51AE /* NetworkService.swift */,
 				E69DC7E421A8D2A9008C51AE /* RequestProtocol.swift */,
@@ -290,8 +307,11 @@
 				E69DC7E821A8D367008C51AE /* Request.swift */,
 				E69DC7EA21A8D5C6008C51AE /* QueryBuilder.swift */,
 				E69DC7EC21A8D5F3008C51AE /* Response.swift */,
+				E69DC7F221A8D8A5008C51AE /* OperationProtocol.swift */,
+				E69DC7F021A8D88A008C51AE /* ModelOperation.swift */,
+				E69DC7F421A8D8EB008C51AE /* ImageOperation.swift */,
 			);
-			path = Remote;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -523,9 +543,13 @@
 				E69DC7EB21A8D5C6008C51AE /* QueryBuilder.swift in Sources */,
 				E69DC7CB21A8CBE4008C51AE /* UserDefaults.swift in Sources */,
 				E69DC7C921A8CBAF008C51AE /* Config.swift in Sources */,
+				E69DC7F321A8D8A5008C51AE /* OperationProtocol.swift in Sources */,
+				E69DC7F721A8D935008C51AE /* DateTime.swift in Sources */,
+				E69DC7F121A8D88A008C51AE /* ModelOperation.swift in Sources */,
 				E69DC7C121A8CA10008C51AE /* l10n.swift in Sources */,
 				E69DC7E721A8D333008C51AE /* NetworkErrors.swift in Sources */,
 				E69DC7ED21A8D5F3008C51AE /* Response.swift in Sources */,
+				E69DC7F521A8D8EB008C51AE /* ImageOperation.swift in Sources */,
 				E69DC79321A8C78C008C51AE /* AppDelegate.swift in Sources */,
 				E69DC7E921A8D367008C51AE /* Request.swift in Sources */,
 				E69DC7EF21A8D64F008C51AE /* NetworkService.swift in Sources */,
