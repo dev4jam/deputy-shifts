@@ -15,6 +15,8 @@
 		E69DC7B921A8C96D008C51AE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E69DC7B521A8C96D008C51AE /* Localizable.strings */; };
 		E69DC7C021A8CA10008C51AE /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7BE21A8CA10008C51AE /* Assets.swift */; };
 		E69DC7C121A8CA10008C51AE /* l10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7BF21A8CA10008C51AE /* l10n.swift */; };
+		E69DC7C921A8CBAF008C51AE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7C821A8CBAF008C51AE /* Config.swift */; };
+		E69DC7CB21A8CBE4008C51AE /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7CA21A8CBE4008C51AE /* UserDefaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,8 @@
 		E69DC7B621A8C96D008C51AE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E69DC7BE21A8CA10008C51AE /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		E69DC7BF21A8CA10008C51AE /* l10n.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = l10n.swift; sourceTree = "<group>"; };
+		E69DC7C821A8CBAF008C51AE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		E69DC7CA21A8CBE4008C51AE /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		F531FD029A7BA8C4C9AAC780 /* Pods-Shifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifts/Pods-Shifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +108,10 @@
 			isa = PBXGroup;
 			children = (
 				E69DC7A521A8C7BB008C51AE /* App */,
+				E69DC7C321A8CB46008C51AE /* RIBs */,
+				E69DC7C721A8CB81008C51AE /* Services */,
+				E69DC7C621A8CB78008C51AE /* Models */,
+				E69DC7C521A8CB59008C51AE /* Utils */,
 				E69DC7BC21A8CA10008C51AE /* Other-Sources */,
 				E69DC7A421A8C7A9008C51AE /* Resources */,
 			);
@@ -161,6 +169,44 @@
 				E69DC7BF21A8CA10008C51AE /* l10n.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		E69DC7C321A8CB46008C51AE /* RIBs */ = {
+			isa = PBXGroup;
+			children = (
+				E69DC7C421A8CB52008C51AE /* Common */,
+			);
+			path = RIBs;
+			sourceTree = "<group>";
+		};
+		E69DC7C421A8CB52008C51AE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		E69DC7C521A8CB59008C51AE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E69DC7CA21A8CBE4008C51AE /* UserDefaults.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E69DC7C621A8CB78008C51AE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E69DC7C821A8CBAF008C51AE /* Config.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E69DC7C721A8CB81008C51AE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +377,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69DC7C021A8CA10008C51AE /* Assets.swift in Sources */,
+				E69DC7CB21A8CBE4008C51AE /* UserDefaults.swift in Sources */,
+				E69DC7C921A8CBAF008C51AE /* Config.swift in Sources */,
 				E69DC7C121A8CA10008C51AE /* l10n.swift in Sources */,
 				E69DC79321A8C78C008C51AE /* AppDelegate.swift in Sources */,
 			);
