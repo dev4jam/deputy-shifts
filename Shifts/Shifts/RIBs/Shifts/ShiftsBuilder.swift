@@ -7,6 +7,7 @@
 //
 
 import RIBs
+import RxSwift
 
 protocol ShiftsDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
@@ -14,10 +15,13 @@ protocol ShiftsDependency: Dependency {
     
     var networkService: NetworkServiceProtocol { get }
     var imageService: NetworkServiceProtocol { get }
+    var state: Variable<AppState> { get }
 }
 
 final class ShiftsComponent: Component<ShiftsDependency> {
     // TODO: Declare 'fileprivate' dependencies that are only used by this RIB.
+    
+    let locationService: LocationServiceProtocol
     
     var networkService: NetworkServiceProtocol {
         return dependency.networkService
@@ -25,6 +29,16 @@ final class ShiftsComponent: Component<ShiftsDependency> {
     
     var imageService: NetworkServiceProtocol {
         return dependency.imageService
+    }
+    
+    var state: Variable<AppState> {
+        return dependency.state
+    }
+    
+    init(dependency: ShiftsDependency, locationService: LocationServiceProtocol) {
+        self.locationService = locationService
+        
+        super.init(dependency: dependency)
     }
 }
 
@@ -41,11 +55,15 @@ final class ShiftsBuilder: Builder<ShiftsDependency>, ShiftsBuildable {
     }
 
     func build(withListener listener: ShiftsListener) -> ShiftsRouting {
-        let component      = ShiftsComponent(dependency: dependency)
-        let viewController = ShiftsViewController()
-        let interactor     = ShiftsInteractor(presenter: viewController,
-                                              networkService: component.networkService,
-                                              imageService: component.imageService)
+        let locationService = LocationService()
+        let component       = ShiftsComponent(dependency: dependency,
+                                              locationService: locationService)
+        let viewController  = ShiftsViewController()
+        let interactor      = ShiftsInteractor(presenter: viewController,
+                                               networkService: component.networkService,
+                                               imageService: component.imageService,
+                                               locationService: component.locationService,
+                                               state: component.state)
         interactor.listener = listener
         
         return ShiftsRouter(interactor: interactor, viewController: viewController)

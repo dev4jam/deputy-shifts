@@ -8,6 +8,7 @@
 
 import RIBs
 import RxSwift
+import CoreLocation
 
 protocol ShiftsRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
@@ -28,29 +29,52 @@ protocol ShiftsListener: class {
 final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsInteractable, ShiftsPresentableListener {
     private let networkService: NetworkServiceProtocol
     private let imageService: NetworkServiceProtocol
+    private let locationService: LocationServiceProtocol
+    private let state: Variable<AppState>
 
     weak var router: ShiftsRouting?
     weak var listener: ShiftsListener?
     
     private var isShiftStarted: Bool = false
+    private var location: CLLocation? = nil
 
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
     init(presenter: ShiftsPresentable,
          networkService: NetworkServiceProtocol,
-         imageService: NetworkServiceProtocol) {
+         imageService: NetworkServiceProtocol,
+         locationService: LocationServiceProtocol,
+         state: Variable<AppState>) {
         
-        self.networkService = networkService
-        self.imageService = imageService
+        self.networkService  = networkService
+        self.imageService    = imageService
+        self.locationService = locationService
+        self.state           = state
         
         super.init(presenter: presenter)
         
         presenter.listener = self
     }
+    
+    private func updateLocation() {
+        locationService.discover()
+            .done { [weak self] (location) in
+                guard let this = self else { return }
+                
+                this.location = location
+            }
+    }
 
     override func didBecomeActive() {
         super.didBecomeActive()
         // TODO: Implement business logic here.
+        
+        state.asObservable()
+            .subscribe(onNext: { [weak self] (newState) in
+                guard let this = self else { return }
+                
+                this.updateLocation()
+            }).disposeOnDeactivate(interactor: self)
     }
 
     override func willResignActive() {

@@ -7,6 +7,7 @@
 //
 
 import RIBs
+import RxSwift
 
 protocol RootDependency: Dependency {
     // TODO: Declare the set of dependencies required by this RIB, but cannot be
@@ -14,6 +15,7 @@ protocol RootDependency: Dependency {
     
     var networkService: NetworkServiceProtocol { get }
     var imageService: NetworkServiceProtocol { get }
+    var state: Variable<AppState> { get }
 }
 
 final class RootComponent: Component<RootDependency> {
@@ -25,6 +27,10 @@ final class RootComponent: Component<RootDependency> {
     
     var imageService: NetworkServiceProtocol {
         return dependency.imageService
+    }
+    
+    var state: Variable<AppState> {
+        return dependency.state
     }
 }
 

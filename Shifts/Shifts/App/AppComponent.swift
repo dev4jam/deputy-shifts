@@ -9,12 +9,19 @@
 import Foundation
 import RIBs
 import UIKit
+import RxSwift
 
 final class AppComponent: Component<EmptyDependency>, RootDependency {
     let networkService: NetworkServiceProtocol
     let imageService: NetworkServiceProtocol
+    let state: Variable<AppState>
 
-    init(application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey : Any]?) {
+    init(application: UIApplication,
+         launchOptions: [UIApplication.LaunchOptionsKey : Any]?,
+         state: Variable<AppState>) {
+        
+        self.state = state
+        
         networkService = NetworkService(baseUrl: Config.serviceBaseUrl,
                                         auth: .token(Config.serviceAccessToken),
                                         headers: [:])
