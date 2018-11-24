@@ -45,5 +45,20 @@ final class ShiftsPresentableMock: ShiftsPresentable {
         showShiftsHandler?(shifts)
     }
 
+    //MARK: - updateActionTitle
+
+    var updateActionTitleToCallsCount = 0
+    var updateActionTitleToCalled: Bool {
+        return updateActionTitleToCallsCount > 0
+    }
+    var updateActionTitleToReceivedNewTitle: String?
+    var updateActionTitleToHandler: ((String) -> Void)?
+
+    func updateActionTitle(to newTitle: String) {
+        updateActionTitleToCallsCount += 1
+        updateActionTitleToReceivedNewTitle = newTitle
+        updateActionTitleToHandler?(newTitle)
+    }
+
 }
 

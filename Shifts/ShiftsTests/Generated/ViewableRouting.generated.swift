@@ -72,6 +72,19 @@ final class RootRoutingMock: RootRouting {
         }
     }
 
+    //MARK: - routeToShifts
+
+    var routeToShiftsCallsCount = 0
+    var routeToShiftsCalled: Bool {
+        return routeToShiftsCallsCount > 0
+    }
+    var routeToShiftsHandler: (() -> Void)?
+
+    func routeToShifts() {
+        routeToShiftsCallsCount += 1
+        routeToShiftsHandler?()
+    }
+
 }
 
 final class ShiftsRoutingMock: ShiftsRouting {

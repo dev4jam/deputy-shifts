@@ -10,6 +10,8 @@ import Foundation
 
 // swiftlint:disable function_parameter_count identifier_name line_length type_body_length
 internal enum L10n {
+  /// N/A
+  internal static let notAvailable = L10n.tr("Localizable", "NotAvailable")
   /// Shift
   internal static let shift = L10n.tr("Localizable", "Shift")
   /// Shifts

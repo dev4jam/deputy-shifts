@@ -44,8 +44,12 @@ final class RootBuilder: Builder<RootDependency>, RootBuildable {
         let component      = RootComponent(dependency: dependency)
         let viewController = RootViewController()
         let interactor     = RootInteractor(presenter: viewController)
-                
+        
+        
+        let shiftsBuilder = ShiftsBuilder(dependency: component)
+        
         return RootRouter(interactor: interactor,
-                          viewController: viewController)
+                          viewController: viewController,
+                          shiftsBuilder: shiftsBuilder)
     }
 }

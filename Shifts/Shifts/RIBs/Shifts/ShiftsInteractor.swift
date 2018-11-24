@@ -18,6 +18,7 @@ protocol ShiftsPresentable: Presentable {
     // TODO: Declare methods the interactor can invoke the presenter to present data.
     
     func showShifts(_ shifts: [ShiftVM])
+    func updateActionTitle(to newTitle: String)
 }
 
 protocol ShiftsListener: class {

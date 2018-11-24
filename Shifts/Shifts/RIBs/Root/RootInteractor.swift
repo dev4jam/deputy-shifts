@@ -11,6 +11,8 @@ import RxSwift
 
 protocol RootRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
+    
+    func routeToShifts()
 }
 
 protocol RootPresentable: Presentable {
@@ -37,6 +39,8 @@ final class RootInteractor: PresentableInteractor<RootPresentable>, RootInteract
     override func didBecomeActive() {
         super.didBecomeActive()
         // TODO: Implement business logic here.
+        
+        router?.routeToShifts()
     }
 
     override func willResignActive() {

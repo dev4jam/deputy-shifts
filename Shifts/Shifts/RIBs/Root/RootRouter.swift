@@ -8,7 +8,7 @@
 
 import RIBs
 
-protocol RootInteractable: Interactable {
+protocol RootInteractable: Interactable, ShiftsListener {
     var router: RootRouting? { get set }
     var listener: RootListener? { get set }
 }
@@ -18,11 +18,27 @@ protocol RootViewControllable: ViewControllable {
 }
 
 final class RootRouter: LaunchRouter<RootInteractable, RootViewControllable>, RootRouting {
-
+    private let shiftsBuilder: ShiftsBuildable
+    
     // TODO: Constructor inject child builder protocols to allow building children.
-    override init(interactor: RootInteractable, viewController: RootViewControllable) {
+    init(interactor: RootInteractable,
+         viewController: RootViewControllable,
+         shiftsBuilder: ShiftsBuildable) {
+        
+        self.shiftsBuilder = shiftsBuilder
+        
         super.init(interactor: interactor, viewController: viewController)
     
         interactor.router = self
+    }
+    
+    // MARK: - RootRouting
+    
+    func routeToShifts() {
+        let rib = shiftsBuilder.build(withListener: interactor)
+        
+        attachChild(rib)
+        
+        viewController.presentInitialView(rib.viewControllable)
     }
 }
