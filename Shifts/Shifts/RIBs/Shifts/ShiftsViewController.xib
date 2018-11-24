@@ -39,7 +39,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <state key="normal" title="Start">
-                        <color key="titleColor" red="0.83442217110000005" green="0.00044300575970000002" blue="0.16820436720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
                         <action selector="onActionButtonTap" destination="-1" eventType="touchUpInside" id="PLA-dc-ylu"/>

@@ -34,8 +34,9 @@ public extension Date {
     public func toServerString() -> String {
         let dateFormatter = DateFormatter()
         
+        dateFormatter.calendar = Calendar(identifier: .iso8601)
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxxxx"
         
         return dateFormatter.string(from: self)
     }

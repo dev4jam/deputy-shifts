@@ -30,7 +30,7 @@ final class ShiftsViewController: UIViewController, ShiftsPresentable, ShiftsVie
         super.viewDidLoad()
         
         actionButton.layer.cornerRadius = actionButton.frame.width / 2.0
-        actionButton.layer.borderColor  = UIColor.red.cgColor
+        actionButton.layer.borderColor  = UIColor.black.cgColor
         actionButton.layer.borderWidth  = 2.0
         
         tableView.register(UINib(nibName: "ShiftCell", bundle: Bundle(for: ShiftCell.self)),

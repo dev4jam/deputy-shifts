@@ -12,7 +12,8 @@ private let dateFormatter = DateFormatter()
 
 extension String {
     public func toDateTime() -> Date? {
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z"
+        dateFormatter.calendar = Calendar(identifier: .iso8601)
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssxxxxx"
         dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
         
         return dateFormatter.date(from: self)
