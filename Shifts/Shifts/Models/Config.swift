@@ -10,4 +10,5 @@ import Foundation
 
 struct Config {
     static let storeFilename: String = "shared-store"
+    static let defaultTimeout: TimeInterval = 60.0
 }

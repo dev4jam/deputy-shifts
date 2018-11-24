@@ -26,6 +26,13 @@
 		E69DC7DB21A8CE78008C51AE /* AutoMockable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7D721A8CE78008C51AE /* AutoMockable.generated.swift */; };
 		E69DC7DC21A8CE78008C51AE /* Interactable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7D821A8CE78008C51AE /* Interactable.generated.swift */; };
 		E69DC7DD21A8CE78008C51AE /* Presentable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7D921A8CE78008C51AE /* Presentable.generated.swift */; };
+		E69DC7E321A8D19A008C51AE /* NetworkiServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7E221A8D19A008C51AE /* NetworkiServiceProtocol.swift */; };
+		E69DC7E521A8D2A9008C51AE /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7E421A8D2A9008C51AE /* RequestProtocol.swift */; };
+		E69DC7E721A8D333008C51AE /* NetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7E621A8D333008C51AE /* NetworkErrors.swift */; };
+		E69DC7E921A8D367008C51AE /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7E821A8D367008C51AE /* Request.swift */; };
+		E69DC7EB21A8D5C6008C51AE /* QueryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7EA21A8D5C6008C51AE /* QueryBuilder.swift */; };
+		E69DC7ED21A8D5F3008C51AE /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7EC21A8D5F3008C51AE /* Response.swift */; };
+		E69DC7EF21A8D64F008C51AE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC7EE21A8D64F008C51AE /* NetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +72,13 @@
 		E69DC7D721A8CE78008C51AE /* AutoMockable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoMockable.generated.swift; sourceTree = "<group>"; };
 		E69DC7D821A8CE78008C51AE /* Interactable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactable.generated.swift; sourceTree = "<group>"; };
 		E69DC7D921A8CE78008C51AE /* Presentable.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentable.generated.swift; sourceTree = "<group>"; };
+		E69DC7E221A8D19A008C51AE /* NetworkiServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkiServiceProtocol.swift; sourceTree = "<group>"; };
+		E69DC7E421A8D2A9008C51AE /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		E69DC7E621A8D333008C51AE /* NetworkErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrors.swift; sourceTree = "<group>"; };
+		E69DC7E821A8D367008C51AE /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		E69DC7EA21A8D5C6008C51AE /* QueryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryBuilder.swift; sourceTree = "<group>"; };
+		E69DC7EC21A8D5F3008C51AE /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		E69DC7EE21A8D64F008C51AE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		F531FD029A7BA8C4C9AAC780 /* Pods-Shifts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shifts.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shifts/Pods-Shifts.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +245,8 @@
 		E69DC7C721A8CB81008C51AE /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E69DC7E121A8D181008C51AE /* Remote */,
+				E69DC7E021A8D17B008C51AE /* Local */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -255,6 +271,27 @@
 				E69DC7D921A8CE78008C51AE /* Presentable.generated.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		E69DC7E021A8D17B008C51AE /* Local */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		E69DC7E121A8D181008C51AE /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				E69DC7E221A8D19A008C51AE /* NetworkiServiceProtocol.swift */,
+				E69DC7EE21A8D64F008C51AE /* NetworkService.swift */,
+				E69DC7E421A8D2A9008C51AE /* RequestProtocol.swift */,
+				E69DC7E621A8D333008C51AE /* NetworkErrors.swift */,
+				E69DC7E821A8D367008C51AE /* Request.swift */,
+				E69DC7EA21A8D5C6008C51AE /* QueryBuilder.swift */,
+				E69DC7EC21A8D5F3008C51AE /* Response.swift */,
+			);
+			path = Remote;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -482,10 +519,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				E69DC7C021A8CA10008C51AE /* Assets.swift in Sources */,
+				E69DC7E321A8D19A008C51AE /* NetworkiServiceProtocol.swift in Sources */,
+				E69DC7EB21A8D5C6008C51AE /* QueryBuilder.swift in Sources */,
 				E69DC7CB21A8CBE4008C51AE /* UserDefaults.swift in Sources */,
 				E69DC7C921A8CBAF008C51AE /* Config.swift in Sources */,
 				E69DC7C121A8CA10008C51AE /* l10n.swift in Sources */,
+				E69DC7E721A8D333008C51AE /* NetworkErrors.swift in Sources */,
+				E69DC7ED21A8D5F3008C51AE /* Response.swift in Sources */,
 				E69DC79321A8C78C008C51AE /* AppDelegate.swift in Sources */,
+				E69DC7E921A8D367008C51AE /* Request.swift in Sources */,
+				E69DC7EF21A8D64F008C51AE /* NetworkService.swift in Sources */,
+				E69DC7E521A8D2A9008C51AE /* RequestProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
