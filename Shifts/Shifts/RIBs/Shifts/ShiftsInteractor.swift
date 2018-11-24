@@ -14,12 +14,15 @@ protocol ShiftsRouting: ViewableRouting {
     // TODO: Declare methods the interactor can invoke to manage sub-tree via the router.
 }
 
-protocol ShiftsPresentable: Presentable {
+protocol ShiftsPresentable: Presentable, LoadingPresentable {
     var listener: ShiftsPresentableListener? { get set }
     // TODO: Declare methods the interactor can invoke the presenter to present data.
     
     func showShifts(_ shifts: [ShiftVM])
     func updateActionTitle(to newTitle: String)
+    
+    func showAction()
+    func hideAction()
 }
 
 protocol ShiftsListener: class {
@@ -64,6 +67,55 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
                 this.location = location
             }
     }
+    
+    private func revertAction() {
+        isShiftStarted = !isShiftStarted
+        
+        updateAction()
+    }
+    
+    private func reloadShifts() {
+        presenter.showLoading(with: L10n.loading)
+        
+        GetShiftsOperation()
+            .execute(in: networkService)
+            .done { [weak self] (shiftsInResponse) in
+                guard let this = self else { return }
+
+                if let shifts = shiftsInResponse, !shifts.isEmpty {
+                    guard let shift = shifts.first else { fatalError() }
+                    
+                    this.isShiftStarted = shift.end != nil
+                    
+                    this.presenter.showShifts(shifts.map { ShiftVM(model: $0) })
+                } else {
+                    this.isShiftStarted = false
+                }
+                
+                this.updateAction()
+                this.presenter.showAction()
+                this.presenter.hideLoading()
+            }
+            .fail { [weak self]  (error) in
+                guard let this = self else { return }
+
+                this.presenter.showError(with: error.localizedDescription)
+            }
+    }
+    
+    private func updateAction() {
+        let newActionTitle = isShiftStarted ? L10n.stop : L10n.start
+        
+        presenter.updateActionTitle(to: newActionTitle)
+    }
+
+    private func startShift() {
+        
+    }
+    
+    private func stopShift() {
+        
+    }
 
     override func didBecomeActive() {
         super.didBecomeActive()
@@ -74,6 +126,7 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
                 guard let this = self else { return }
                 
                 this.updateLocation()
+                this.reloadShifts()
             }).disposeOnDeactivate(interactor: self)
     }
 
@@ -82,21 +135,25 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
         // TODO: Pause any business logic.
     }
     
-    private func updateAction() {
-        let newActionTitle = isShiftStarted ? L10n.stop : L10n.start
-        
-        presenter.updateActionTitle(to: newActionTitle)
-    }
-    
     // MARK: - ShiftsPresentableListener
     
     func didPrepareView() {
+        reloadShifts()
         updateAction()
     }
     
     func didSelectAction() {
+        presenter.hideAction()
+        
+        if isShiftStarted {
+            stopShift()
+        } else {
+            startShift()
+        }
+        
         isShiftStarted = !isShiftStarted
         
         updateAction()
+        reloadShifts()
     }
 }

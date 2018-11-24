@@ -49,6 +49,22 @@ final class ShiftsViewController: UIViewController, ShiftsPresentable, ShiftsVie
     func updateActionTitle(to newTitle: String) {
         actionButton.setTitle(newTitle, for: UIControl.State())
     }
+    
+    func showAction() {
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.actionButton.alpha = 1.0
+        }) { finished in
+            self.actionButton.alpha = 1.0
+        }
+    }
+    
+    func hideAction() {
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+            self.actionButton.alpha = 0.0
+        }) { finished in
+            self.actionButton.alpha = 0.0
+        }
+    }
 }
 
 // MARK: - UITableViewDelegate, UITableViewDataSource

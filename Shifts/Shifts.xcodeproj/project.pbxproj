@@ -248,8 +248,8 @@
 		E69DC7B421A8C96D008C51AE /* LocalizableStrings */ = {
 			isa = PBXGroup;
 			children = (
-				E69DC82B21A8F175008C51AE /* InfoPlist.strings */,
 				E69DC7B521A8C96D008C51AE /* Localizable.strings */,
+				E69DC82B21A8F175008C51AE /* InfoPlist.strings */,
 			);
 			path = LocalizableStrings;
 			sourceTree = "<group>";

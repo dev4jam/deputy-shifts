@@ -60,5 +60,119 @@ final class ShiftsPresentableMock: ShiftsPresentable {
         updateActionTitleToHandler?(newTitle)
     }
 
+    //MARK: - showAction
+
+    var showActionCallsCount = 0
+    var showActionCalled: Bool {
+        return showActionCallsCount > 0
+    }
+    var showActionHandler: (() -> Void)?
+
+    func showAction() {
+        showActionCallsCount += 1
+        showActionHandler?()
+    }
+
+    //MARK: - hideAction
+
+    var hideActionCallsCount = 0
+    var hideActionCalled: Bool {
+        return hideActionCallsCount > 0
+    }
+    var hideActionHandler: (() -> Void)?
+
+    func hideAction() {
+        hideActionCallsCount += 1
+        hideActionHandler?()
+    }
+
+    //MARK: - showLoading
+
+    var showLoadingWithCallsCount = 0
+    var showLoadingWithCalled: Bool {
+        return showLoadingWithCallsCount > 0
+    }
+    var showLoadingWithReceivedStatus: String?
+    var showLoadingWithHandler: ((String?) -> Void)?
+
+    func showLoading(with status: String?) {
+        showLoadingWithCallsCount += 1
+        showLoadingWithReceivedStatus = status
+        showLoadingWithHandler?(status)
+    }
+
+    //MARK: - showSuccess
+
+    var showSuccessWithCallsCount = 0
+    var showSuccessWithCalled: Bool {
+        return showSuccessWithCallsCount > 0
+    }
+    var showSuccessWithReceivedStatus: String?
+    var showSuccessWithHandler: ((String?) -> Void)?
+
+    func showSuccess(with status: String?) {
+        showSuccessWithCallsCount += 1
+        showSuccessWithReceivedStatus = status
+        showSuccessWithHandler?(status)
+    }
+
+    //MARK: - showError
+
+    var showErrorWithCallsCount = 0
+    var showErrorWithCalled: Bool {
+        return showErrorWithCallsCount > 0
+    }
+    var showErrorWithReceivedStatus: String?
+    var showErrorWithHandler: ((String?) -> Void)?
+
+    func showError(with status: String?) {
+        showErrorWithCallsCount += 1
+        showErrorWithReceivedStatus = status
+        showErrorWithHandler?(status)
+    }
+
+    //MARK: - showInfo
+
+    var showInfoWithCallsCount = 0
+    var showInfoWithCalled: Bool {
+        return showInfoWithCallsCount > 0
+    }
+    var showInfoWithReceivedStatus: String?
+    var showInfoWithHandler: ((String) -> Void)?
+
+    func showInfo(with status: String) {
+        showInfoWithCallsCount += 1
+        showInfoWithReceivedStatus = status
+        showInfoWithHandler?(status)
+    }
+
+    //MARK: - showProgress
+
+    var showProgressTitleCallsCount = 0
+    var showProgressTitleCalled: Bool {
+        return showProgressTitleCallsCount > 0
+    }
+    var showProgressTitleReceivedArguments: (progress: Float, title: String?)?
+    var showProgressTitleHandler: ((Float, String?) -> Void)?
+
+    func showProgress(_ progress: Float, title: String?) {
+        showProgressTitleCallsCount += 1
+        showProgressTitleReceivedArguments = (progress: progress, title: title)
+        showProgressTitleHandler?(progress, title)
+    }
+
+    //MARK: - hideLoading
+
+    var hideLoadingCallsCount = 0
+    var hideLoadingCalled: Bool {
+        return hideLoadingCallsCount > 0
+    }
+    var hideLoadingHandler: (() -> Void)?
+
+    func hideLoading() {
+        hideLoadingCallsCount += 1
+        hideLoadingHandler?()
+    }
+
 }
 
