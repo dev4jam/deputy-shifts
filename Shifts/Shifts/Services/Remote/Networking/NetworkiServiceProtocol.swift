@@ -14,7 +14,7 @@ public enum SessionAuth {
     case basic(String, String)
 }
 
-public protocol NetworkServiceProtocol: class {
+public protocol NetworkServiceProtocol: class, AutoMockable {
     var headers: HeadersDict { get set }
     var auth: SessionAuth? { get set }
     var url: String { get }

@@ -4,6 +4,8 @@
 import Foundation
 import RIBs
 import RxSwift
+import CoreLocation
+import When
 
 @testable import Shifts
 

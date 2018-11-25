@@ -30,7 +30,7 @@ enum LocationError: Error {
     }
 }
 
-protocol LocationServiceProtocol {
+protocol LocationServiceProtocol: AutoMockable {
     var lastLocation: CLLocation? { get }
     
     func discover() -> Promise<CLLocation>
