@@ -98,6 +98,25 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
             presenter.showError(with: error.localizedDescription)
         }
     }
+    
+    private func parseShifts(_ shifts: [Shift]?) {
+        if let shifts = shifts, !shifts.isEmpty {
+            guard let shift = shifts.last else { fatalError() }
+            
+            isShiftStarted = shift.end.isEmpty
+            
+            let sortedShifts = shifts
+                .sorted { $0.id > $1.id }
+                .map { ShiftVM(model: $0) }
+            
+            presenter.showShifts(sortedShifts)
+        } else {
+            isShiftStarted = false
+        }
+        
+        updateAction()
+        presenter.showAction()
+    }
 
     private func reloadShifts() {
         presenter.showLoading(with: L10n.loading)
@@ -107,18 +126,7 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
             .done { [weak self] (shiftsInResponse) in
                 guard let this = self else { return }
 
-                if let shifts = shiftsInResponse, !shifts.isEmpty {
-                    guard let shift = shifts.first else { fatalError() }
-                    
-                    this.isShiftStarted = shift.end != nil
-                    
-                    this.presenter.showShifts(shifts.map { ShiftVM(model: $0) })
-                } else {
-                    this.isShiftStarted = false
-                }
-                
-                this.updateAction()
-                this.presenter.showAction()
+                this.parseShifts(shiftsInResponse)
                 this.presenter.hideLoading()
             }
             .fail { [weak self]  (error) in

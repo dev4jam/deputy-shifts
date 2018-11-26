@@ -8,11 +8,11 @@
 
 import Foundation
 
-final class StartShiftOperation: ModelOperation<EmptyResponse> {
+final class StartShiftOperation: PlainTextOperation {
     init(time: Date, latitude: Double, longitude: Double) {
         super.init()
         
-        let body: RequestBody = RequestBody.json([
+        let body: RequestBody = .json([
             "time": time.toServerString(),
             "latitude": "\(latitude)",
             "longitude": "\(longitude)"
@@ -23,16 +23,16 @@ final class StartShiftOperation: ModelOperation<EmptyResponse> {
     }
 }
 
-final class StopShiftOperation: ModelOperation<EmptyResponse> {
+final class StopShiftOperation: PlainTextOperation {
     init(time: Date, latitude: Double, longitude: Double) {
         super.init()
         
-        let body: RequestBody = RequestBody.json([
+        let body: RequestBody = .json([
             "time": time.toServerString(),
             "latitude": "\(latitude)",
             "longitude": "\(longitude)"
         ])
-        
+
         request = Request(method: .post, endpoint: "/shift/end",
                           params: nil, fields: nil, body: body)
     }

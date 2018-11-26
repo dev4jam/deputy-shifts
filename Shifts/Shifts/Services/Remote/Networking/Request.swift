@@ -194,10 +194,8 @@ public class Request: RequestProtocol, CustomStringConvertible {
         self.fields      = fields
         self.body        = body
         self.headers     = [
-            "Content-Encoding": "UTF-8",
             "Content-Type":     "application/json",
             "Accept":           "application/json",
-            "x-pretty-print":   "2"
         ]
     }
     

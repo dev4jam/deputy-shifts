@@ -26,7 +26,7 @@ final class ShiftVM {
     }
 
     var endedAt: String? {
-        return model.end?.toDateTime()?.toString()
+        return model.end.toDateTime()?.toString()
     }
 
     var startLatitude: String {

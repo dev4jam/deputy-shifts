@@ -89,7 +89,11 @@ extension ShiftsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let shiftCell = cell as? ShiftCell else { fatalError() }
         guard indexPath.row < shifts.count else { fatalError() }
         
-        shiftCell.show(shift: shifts[indexPath.row])
+        let shift = shifts[indexPath.row]
+        
+        shiftCell.show(shift: shift)
+        
+        listener?.didRequestImage(for: shift)
         
         return shiftCell
     }

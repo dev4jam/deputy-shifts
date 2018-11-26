@@ -11,7 +11,7 @@ import Foundation
 struct Shift: Codable {
     let id: Int
     let start: String
-    let end: String?
+    let end: String
     let startLatitude: String
     let startLongitude: String
     let endLatitude: String

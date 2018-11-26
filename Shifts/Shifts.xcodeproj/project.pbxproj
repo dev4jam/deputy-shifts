@@ -11,6 +11,7 @@
 		28772289924FFD0C459B6EB9 /* Pods_ShiftsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25440A1A3D707DBFDC682A87 /* Pods_ShiftsTests.framework */; };
 		E66003F921A919DB00C29E78 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66003F821A919DB00C29E78 /* EmptyResponse.swift */; };
 		E66003FB21AB620500C29E78 /* ShiftsMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66003FA21AB620500C29E78 /* ShiftsMocks.swift */; };
+		E66003FD21AB953C00C29E78 /* PlainTextOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E66003FC21AB953C00C29E78 /* PlainTextOperation.swift */; };
 		E69DC79321A8C78C008C51AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69DC79221A8C78C008C51AE /* AppDelegate.swift */; };
 		E69DC79A21A8C78F008C51AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E69DC79921A8C78F008C51AE /* Assets.xcassets */; };
 		E69DC79D21A8C78F008C51AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E69DC79B21A8C78F008C51AE /* LaunchScreen.storyboard */; };
@@ -86,6 +87,7 @@
 		E5FE8B2F65BCFD9B95EFD1C1 /* Pods-ShiftsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShiftsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShiftsTests/Pods-ShiftsTests.release.xcconfig"; sourceTree = "<group>"; };
 		E66003F821A919DB00C29E78 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		E66003FA21AB620500C29E78 /* ShiftsMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftsMocks.swift; sourceTree = "<group>"; };
+		E66003FC21AB953C00C29E78 /* PlainTextOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainTextOperation.swift; sourceTree = "<group>"; };
 		E69DC78F21A8C78C008C51AE /* Shifts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shifts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E69DC79221A8C78C008C51AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E69DC79921A8C78F008C51AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				E69DC7F221A8D8A5008C51AE /* OperationProtocol.swift */,
 				E69DC7F021A8D88A008C51AE /* ModelOperation.swift */,
 				E69DC7F421A8D8EB008C51AE /* ImageOperation.swift */,
+				E66003FC21AB953C00C29E78 /* PlainTextOperation.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -660,6 +663,7 @@
 				E69DC82821A8F12B008C51AE /* LocationServiceProtocol.swift in Sources */,
 				E69DC7EB21A8D5C6008C51AE /* QueryBuilder.swift in Sources */,
 				E69DC83121A90EFD008C51AE /* ShiftCell.swift in Sources */,
+				E66003FD21AB953C00C29E78 /* PlainTextOperation.swift in Sources */,
 				E69DC82221A8E588008C51AE /* RootComponent+Shifts.swift in Sources */,
 				E69DC81521A8E106008C51AE /* AppComponent.swift in Sources */,
 				E69DC80821A8DE66008C51AE /* AutoMockable.swift in Sources */,
