@@ -25,8 +25,10 @@ final class ShiftsTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
         locationService = LocationServiceProtocolMock()
-        networkService = NetworkServiceProtocolMock(baseUrl: "", auth: nil, headers: [:])
-        imageService = NetworkServiceProtocolMock(baseUrl: "", auth: nil, headers: [:])
+        networkService  = NetworkServiceProtocolMock(baseUrl: Config.serviceBaseUrl,
+                                                     auth: .token(Config.serviceAccessToken),
+                                                     headers: [:])
+        imageService    = NetworkServiceProtocolMock(baseUrl: "", auth: nil, headers: [:])
         
         appState   = Variable<AppState>(.active)
         presenter  = ShiftsPresentableMock()
@@ -61,5 +63,19 @@ final class ShiftsTests: XCTestCase {
         interactor.deactivate()
         
         XCTAssertFalse(interactor.isActive)
+    }
+    
+    func testInitialState() {
+        XCTAssertEqual(presenter.updateActionTitleToCallsCount, 0)
+
+        
+        interactor.activate()
+        interactor.didPrepareView()
+
+        XCTAssertEqual(presenter.updateActionTitleToCallsCount, 1)
+
+        
+        
+        interactor.deactivate()
     }
 }
