@@ -162,7 +162,6 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
             .done { [weak self] (response) in
                 guard let this = self else { return }
                 
-                this.presenter.hideLoading()
                 this.reloadShifts()
             }
             .fail { [weak self]  (error) in
@@ -192,7 +191,6 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
             .done { [weak self] (response) in
                 guard let this = self else { return }
                 
-                this.presenter.hideLoading()
                 this.reloadShifts()
             }
             .fail { [weak self]  (error) in
@@ -253,6 +251,5 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
         isShiftStarted = !isShiftStarted
         
         updateAction()
-        reloadShifts()
     }
 }
