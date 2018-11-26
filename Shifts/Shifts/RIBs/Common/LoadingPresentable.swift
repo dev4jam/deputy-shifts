@@ -11,10 +11,7 @@ import SVProgressHUD
 
 protocol LoadingPresentable: class {
     func showLoading(with status: String?)
-    func showSuccess(with status: String?)
     func showError(with status: String?)
-    func showInfo(with status: String)
-    func showProgress(_ progress: Float, title: String?)
 
     func hideLoading()
 }
@@ -24,23 +21,11 @@ extension UIViewController: LoadingPresentable {
         SVProgressHUD.show(withStatus: status)
     }
 
-    func showSuccess(with status: String?) {
-        SVProgressHUD.showSuccess(withStatus: status)
-    }
-
     func showError(with status: String?) {
         SVProgressHUD.showError(withStatus: status)
-    }
-
-    func showInfo(with status: String) {
-        SVProgressHUD.showInfo(withStatus: status)
     }
 
     func hideLoading() {
         SVProgressHUD.dismiss()
     }
-
-    func showProgress(_ progress: Float, title: String?) {
-        SVProgressHUD.showProgress(progress, status: title)
-    }    
 }

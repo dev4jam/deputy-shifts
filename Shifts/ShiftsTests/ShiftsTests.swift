@@ -8,6 +8,8 @@
 
 import XCTest
 import RxSwift
+import When
+import CoreLocation
 
 @testable import Shifts
 
@@ -20,17 +22,20 @@ final class ShiftsTests: XCTestCase {
     private var locationService: LocationServiceProtocolMock!
     private var networkService: NetworkServiceProtocolMock!
     private var imageService: NetworkServiceProtocolMock!
+    private var locationPromise: Promise<CLLocation>!
+    private var responsePromise: Promise<ResponseProtocol>!
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         
+        locationPromise = Promise<CLLocation>()
+        responsePromise = Promise<ResponseProtocol>()
         locationService = LocationServiceProtocolMock()
+        imageService    = NetworkServiceProtocolMock(baseUrl: "", auth: nil, headers: [:])
         networkService  = NetworkServiceProtocolMock(baseUrl: Config.serviceBaseUrl,
                                                      auth: .token(Config.serviceAccessToken),
                                                      headers: [:])
-        imageService    = NetworkServiceProtocolMock(baseUrl: "", auth: nil, headers: [:])
-        
-        appState   = Variable<AppState>(.active)
+        appState   = Variable<AppState>(.launched)
         presenter  = ShiftsPresentableMock()
         view       = ShiftsViewControllableMock()
         interactor = ShiftsInteractor(presenter: presenter,
@@ -42,6 +47,12 @@ final class ShiftsTests: XCTestCase {
         router = ShiftsRoutingMock(interactable: interactor, viewController: view)
         
         interactor.router = router
+        
+        locationService.discoverReturnValue = locationPromise
+        networkService.executeReturnValue   = responsePromise
+        imageService.executeReturnValue     = responsePromise
+        
+        locationService.lastLocation = CLLocation(latitude: 0.0, longitude: 0.0)
     }
 
     override func tearDown() {
@@ -67,14 +78,28 @@ final class ShiftsTests: XCTestCase {
     
     func testInitialState() {
         XCTAssertEqual(presenter.updateActionTitleToCallsCount, 0)
-
+        XCTAssertEqual(presenter.showShiftsCallsCount, 0)
+        XCTAssertEqual(presenter.showActionCallsCount, 0)
+        XCTAssertEqual(presenter.hideActionCallsCount, 0)
+        XCTAssertEqual(presenter.showLoadingWithCallsCount, 0)
+        XCTAssertEqual(presenter.showErrorWithCallsCount, 0)
+        XCTAssertEqual(presenter.hideLoadingCallsCount, 0)
         
         interactor.activate()
         interactor.didPrepareView()
 
         XCTAssertEqual(presenter.updateActionTitleToCallsCount, 1)
-
+        XCTAssertEqual(presenter.updateActionTitleToReceivedNewTitle, L10n.start)
         
+        interactor.deactivate()
+    }
+
+    func testInitialLoading() {
+        interactor.activate()
+        interactor.didPrepareView()
+        
+        locationPromise.resolve(CLLocation(latitude: 1.0, longitude: 1.0))
+        responsePromise.resolve(<#T##value: ResponseProtocol##ResponseProtocol#>)
         
         interactor.deactivate()
     }

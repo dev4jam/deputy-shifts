@@ -58,10 +58,11 @@ final class ShiftsBuilder: Builder<ShiftsDependency>, ShiftsBuildable {
         let locationService = LocationService()
         let component       = ShiftsComponent(dependency: dependency,
                                               locationService: locationService)
+        let service         = ShiftsService(networkService: component.networkService,
+                                            imageService: component.imageService)
         let viewController  = ShiftsViewController()
         let interactor      = ShiftsInteractor(presenter: viewController,
-                                               networkService: component.networkService,
-                                               imageService: component.imageService,
+                                               service: service,
                                                locationService: component.locationService,
                                                state: component.state)
         interactor.listener = listener

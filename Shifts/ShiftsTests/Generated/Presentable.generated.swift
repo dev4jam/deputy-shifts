@@ -101,21 +101,6 @@ final class ShiftsPresentableMock: ShiftsPresentable {
         showLoadingWithHandler?(status)
     }
 
-    //MARK: - showSuccess
-
-    var showSuccessWithCallsCount = 0
-    var showSuccessWithCalled: Bool {
-        return showSuccessWithCallsCount > 0
-    }
-    var showSuccessWithReceivedStatus: String?
-    var showSuccessWithHandler: ((String?) -> Void)?
-
-    func showSuccess(with status: String?) {
-        showSuccessWithCallsCount += 1
-        showSuccessWithReceivedStatus = status
-        showSuccessWithHandler?(status)
-    }
-
     //MARK: - showError
 
     var showErrorWithCallsCount = 0
@@ -129,36 +114,6 @@ final class ShiftsPresentableMock: ShiftsPresentable {
         showErrorWithCallsCount += 1
         showErrorWithReceivedStatus = status
         showErrorWithHandler?(status)
-    }
-
-    //MARK: - showInfo
-
-    var showInfoWithCallsCount = 0
-    var showInfoWithCalled: Bool {
-        return showInfoWithCallsCount > 0
-    }
-    var showInfoWithReceivedStatus: String?
-    var showInfoWithHandler: ((String) -> Void)?
-
-    func showInfo(with status: String) {
-        showInfoWithCallsCount += 1
-        showInfoWithReceivedStatus = status
-        showInfoWithHandler?(status)
-    }
-
-    //MARK: - showProgress
-
-    var showProgressTitleCallsCount = 0
-    var showProgressTitleCalled: Bool {
-        return showProgressTitleCallsCount > 0
-    }
-    var showProgressTitleReceivedArguments: (progress: Float, title: String?)?
-    var showProgressTitleHandler: ((Float, String?) -> Void)?
-
-    func showProgress(_ progress: Float, title: String?) {
-        showProgressTitleCallsCount += 1
-        showProgressTitleReceivedArguments = (progress: progress, title: title)
-        showProgressTitleHandler?(progress, title)
     }
 
     //MARK: - hideLoading

@@ -84,3 +84,78 @@ final class NetworkServiceProtocolMock: NetworkServiceProtocol {
 
 }
 
+final class ShiftsServiceProtocolMock: ShiftsServiceProtocol {
+
+    //MARK: - init
+
+    var initNetworkServiceImageServiceReceivedArguments: (networkService: NetworkServiceProtocol, imageService: NetworkServiceProtocol)?
+    var initNetworkServiceImageServiceHandler: ((NetworkServiceProtocol, NetworkServiceProtocol) -> Void)?
+
+    required init(networkService: NetworkServiceProtocol, imageService: NetworkServiceProtocol) {
+        initNetworkServiceImageServiceReceivedArguments = (networkService: networkService, imageService: imageService)
+        initNetworkServiceImageServiceHandler?(networkService, imageService)
+    }
+    //MARK: - getShifts
+
+    var getShiftsCallsCount = 0
+    var getShiftsCalled: Bool {
+        return getShiftsCallsCount > 0
+    }
+    var getShiftsReturnValue: Promise<[Shift]>!
+    var getShiftsHandler: (() -> Promise<[Shift]>)?
+
+    func getShifts() -> Promise<[Shift]> {
+        getShiftsCallsCount += 1
+        return getShiftsHandler.map({ $0() }) ?? getShiftsReturnValue
+    }
+
+    //MARK: - startShift
+
+    var startShiftLatitudeLongitudeCallsCount = 0
+    var startShiftLatitudeLongitudeCalled: Bool {
+        return startShiftLatitudeLongitudeCallsCount > 0
+    }
+    var startShiftLatitudeLongitudeReceivedArguments: (latitude: Double, longitude: Double)?
+    var startShiftLatitudeLongitudeReturnValue: Promise<Bool>!
+    var startShiftLatitudeLongitudeHandler: ((Double, Double) -> Promise<Bool>)?
+
+    func startShift(latitude: Double, longitude: Double) -> Promise<Bool> {
+        startShiftLatitudeLongitudeCallsCount += 1
+        startShiftLatitudeLongitudeReceivedArguments = (latitude: latitude, longitude: longitude)
+        return startShiftLatitudeLongitudeHandler.map({ $0(latitude, longitude) }) ?? startShiftLatitudeLongitudeReturnValue
+    }
+
+    //MARK: - stopShift
+
+    var stopShiftLatitudeLongitudeCallsCount = 0
+    var stopShiftLatitudeLongitudeCalled: Bool {
+        return stopShiftLatitudeLongitudeCallsCount > 0
+    }
+    var stopShiftLatitudeLongitudeReceivedArguments: (latitude: Double, longitude: Double)?
+    var stopShiftLatitudeLongitudeReturnValue: Promise<Bool>!
+    var stopShiftLatitudeLongitudeHandler: ((Double, Double) -> Promise<Bool>)?
+
+    func stopShift(latitude: Double, longitude: Double) -> Promise<Bool> {
+        stopShiftLatitudeLongitudeCallsCount += 1
+        stopShiftLatitudeLongitudeReceivedArguments = (latitude: latitude, longitude: longitude)
+        return stopShiftLatitudeLongitudeHandler.map({ $0(latitude, longitude) }) ?? stopShiftLatitudeLongitudeReturnValue
+    }
+
+    //MARK: - getShiftImage
+
+    var getShiftImageUrlCallsCount = 0
+    var getShiftImageUrlCalled: Bool {
+        return getShiftImageUrlCallsCount > 0
+    }
+    var getShiftImageUrlReceivedUrl: String?
+    var getShiftImageUrlReturnValue: Promise<UIImage>!
+    var getShiftImageUrlHandler: ((String) -> Promise<UIImage>)?
+
+    func getShiftImage(url: String) -> Promise<UIImage> {
+        getShiftImageUrlCallsCount += 1
+        getShiftImageUrlReceivedUrl = url
+        return getShiftImageUrlHandler.map({ $0(url) }) ?? getShiftImageUrlReturnValue
+    }
+
+}
+

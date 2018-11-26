@@ -30,8 +30,7 @@ protocol ShiftsListener: class {
 }
 
 final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsInteractable, ShiftsPresentableListener {
-    private let networkService: NetworkServiceProtocol
-    private let imageService: NetworkServiceProtocol
+    private let service: ShiftsServiceProtocol
     private let locationService: LocationServiceProtocol
     private let state: Variable<AppState>
 
@@ -44,13 +43,11 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
     // TODO: Add additional dependencies to constructor. Do not perform any logic
     // in constructor.
     init(presenter: ShiftsPresentable,
-         networkService: NetworkServiceProtocol,
-         imageService: NetworkServiceProtocol,
+         service: ShiftsServiceProtocol,
          locationService: LocationServiceProtocol,
          state: Variable<AppState>) {
         
-        self.networkService  = networkService
-        self.imageService    = imageService
+        self.service         = service
         self.locationService = locationService
         self.state           = state
         
@@ -99,8 +96,8 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
         }
     }
     
-    private func parseShifts(_ shifts: [Shift]?) {
-        if let shifts = shifts, !shifts.isEmpty {
+    private func parseShifts(_ shifts: [Shift]) {
+        if !shifts.isEmpty {
             guard let shift = shifts.last else { fatalError() }
             
             isShiftStarted = shift.end.isEmpty
@@ -121,12 +118,11 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
     private func reloadShifts() {
         presenter.showLoading(with: L10n.loading)
         
-        GetShiftsOperation()
-            .execute(in: networkService)
-            .done { [weak self] (shiftsInResponse) in
+        service.getShifts()
+            .done { [weak self] (shifts) in
                 guard let this = self else { return }
 
-                this.parseShifts(shiftsInResponse)
+                this.parseShifts(shifts)
                 this.presenter.hideLoading()
             }
             .fail { [weak self]  (error) in
@@ -155,10 +151,8 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
         
         presenter.showLoading(with: L10n.starting)
         
-        StartShiftOperation(time: Date(),
-                            latitude: location.coordinate.latitude,
-                            longitude: location.coordinate.longitude)
-            .execute(in: networkService)
+        service.startShift(latitude: location.coordinate.latitude,
+                           longitude: location.coordinate.longitude)
             .done { [weak self] (response) in
                 guard let this = self else { return }
                 
@@ -184,10 +178,8 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
         
         presenter.showLoading(with: L10n.stopping)
         
-        StopShiftOperation(time: Date(),
-                           latitude: location.coordinate.latitude,
-                           longitude: location.coordinate.longitude)
-            .execute(in: networkService)
+        service.stopShift(latitude: location.coordinate.latitude,
+                          longitude: location.coordinate.longitude)
             .done { [weak self] (response) in
                 guard let this = self else { return }
                 
@@ -232,8 +224,7 @@ final class ShiftsInteractor: PresentableInteractor<ShiftsPresentable>, ShiftsIn
         guard shift.image.value == nil else { return }
         guard !shift.imageUrl.isEmpty else { return }
         
-        GetShiftImageOperation(url: shift.imageUrl)
-            .execute(in: imageService)
+        service.getShiftImage(url: shift.imageUrl)
             .done { (image) in
                 shift.image.value = image
             }
